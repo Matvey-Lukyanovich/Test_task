@@ -1,0 +1,30 @@
+{% extends 'main_form/base.html' %}
+
+{% block topline %}
+    <a class="me-3 py-2 text-dark text-decoration-none "><strong>Hello, {{request.user}}! |  </strong></a>
+    <a class="me-3 py-2 text-dark text-decoration-none " href="{% url 'home'%}"><strong>|  ГЛАВНАЯ   |</strong></a>
+    <a class="me-3 py-2 text-dark text-decoration-none" href="{% url 'history'%}"  ><strong>|  ИСТОРИЯ   |</strong></a>
+    <a class="me-3 py-2 text-dark text-decoration-none" href="{% url 'logout'%}" ><strong>|  ВЫХОД</strong></a>
+{% endblock%}
+
+
+{% block title %}
+История
+{% endblock%}
+
+{% block content %}
+<h2>История:</h2>
+    {% if links %}
+        {% for el in links %}
+                <div class="alert alert-warning mt-2">
+                   <h3>Сокращенная ссылка:  <a href="{{el.link_short}}" style="color: #AF5C04">{{ el.link_short }}</a> </h3>
+                   <h4>Исходная ссылка:<a href="{{el.link_short}}" style="color: #AF5C04"> {{ el.link_info }}</a> </h4>
+<!--                   <h6>Пользователь: {{ request.user }}</h6>-->
+                </div>
+        {% endfor %}
+    {% else %}
+        <p>Нет записей</p>
+    {% endif %}
+
+
+{% endblock%}<!doctype html>

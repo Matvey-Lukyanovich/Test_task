@@ -1,0 +1,57 @@
+{% extends 'main_form/base.html' %}
+
+{% block topline %}
+    <a class="me-3 py-2 text-dark text-decoration-none " href="{% url 'login'%}"><strong>ВХОД   |</strong></a>
+    <a class="me-3 py-2 text-dark text-decoration-none" href="{% url 'register'%}" ><strong>|  РЕГИСТРАЦИЯ</strong></a>
+{% endblock%}
+
+{% block title %}
+Вход
+{% endblock%}
+
+{% block content %}
+<div class="container h-100">
+		<div class="d-flex justify-content-center h-100">
+			<div class="user_card">
+				<div class="d-flex justify-content-center">
+
+
+					<h3 id="form-title">ВХОД</h3>
+				</div>
+				<div class="d-flex justify-content-center form_container">
+					<form method="POST" action="">
+						{% csrf_token %}
+						<div class="input-group mb-3">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+
+							<input type="text" name="username" placeholder="Имя пользователя..." class="form-control">
+						</div>
+
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+
+								<input type="password" name="password" placeholder="Пароль..." class="form-control" >
+						</div>
+
+							<div class="d-flex justify-content-center mt-3 login_container">
+				 				<input class="btn login_btn" type="submit" value="ВОЙТИ" style="border-color: black;">
+				   			</div>
+					</form>
+
+				</div>
+
+				<div class="mt-4">
+					<div class="d-flex justify-content-center links">
+						Нет аккаунта? <a href="{% url 'register' %}" class="ml-2" style="color: black"><strong>Регистрация</strong> </a>
+					</div>
+
+				</div>
+			</div>
+		</div>
+</div>
+
+{% endblock%}

@@ -1,0 +1,26 @@
+{% extends 'main_form/base.html' %}
+
+{% block topline %}
+    <a class="me-3 py-2 text-dark text-decoration-none "><strong>Hello, {{request.user}}! |  </strong></a>
+    <a class="me-3 py-2 text-dark text-decoration-none " href="{% url 'home'%}"><strong>|  ГЛАВНАЯ   |</strong></a>
+    <a class="me-3 py-2 text-dark text-decoration-none" href="{% url 'history'%}" ><strong>|  ИСТОРИЯ   |</strong></a>
+    <a class="me-3 py-2 text-dark text-decoration-none" href="{% url 'logout'%}" ><strong>|  ВЫХОД</strong></a>
+{% endblock%}
+
+{% block title %}
+Главная
+{% endblock%}
+
+{% block content %}
+    <h2>Сокращение ссылки:</h2>
+    <form method="POST" action="" >
+        {% csrf_token %}
+        {{form.link_info}}<br>
+        {{form.link_short}}
+        {{form.user_info}}
+        <button type="submit" class="btn btn-success"> Сократить </button><br><br>
+        <br>
+        <span>{{ error }}</span>
+    </form>
+
+{% endblock%}
